@@ -1,0 +1,18 @@
+//namespace Images {
+
+    include "images.txt"
+
+//namespace_end
+
+namespace Constants {
+
+    uint8_t StanceToImageXRefFX[] = {
+        0,
+include "movements_convert.txt"
+    };
+
+namespace_end
+
+savesection  // Anything below here will be stored in the save block
+
+uint16_t 0xFFFF // Save state  end marker
