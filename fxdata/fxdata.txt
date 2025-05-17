@@ -1,6 +1,6 @@
 //namespace Images {
 
-    include "images.txt"
+    include "data/images.txt"
 
 //namespace_end
 
@@ -12,6 +12,10 @@ include "movements_convert.txt"
     };
 
 namespace_end
+
+
+include "data/Music.txt"
+
 
 savesection  // Anything below here will be stored in the save block
 

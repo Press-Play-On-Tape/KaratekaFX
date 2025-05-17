@@ -8,8 +8,8 @@
 #define _DEBUG_STRIKING_RANGE
 
 #define JORDAN_MECHNER
-#define SOUNDS_ARDUBOYTONES
-#define _SOUNDS_ATMLIB
+#define _SOUNDS_ARDUBOYTONES
+#define SOUNDS_SYNTHU
 #define _USE_DIFFERENT_BAMS
 #define USE_ENHANCED_BAM3
 
@@ -37,6 +37,14 @@
 #define GAME_SPLASH_SCREEN                        21
 
 #define GAME_STATE_SEQ_SIZE                       6
+
+enum class MusicSong : uint8_t {
+    MainTheme,
+};
+
+enum class MusicSFX : uint8_t {
+    SFX_Death,
+};
 
 struct Entity {
   uint8_t stance;

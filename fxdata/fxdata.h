@@ -6,8 +6,8 @@ using uint24_t = __uint24;
 
 // Initialize FX hardware using  FX::begin(FX_DATA_PAGE); in the setup() function.
 
-constexpr uint16_t FX_DATA_PAGE  = 0xff8c;
-constexpr uint24_t FX_DATA_BYTES = 25433;
+constexpr uint16_t FX_DATA_PAGE  = 0xff40;
+constexpr uint24_t FX_DATA_BYTES = 44960;
 
 constexpr uint16_t FX_SAVE_PAGE  = 0xfff0;
 constexpr uint24_t FX_SAVE_BYTES = 2;
@@ -222,5 +222,13 @@ namespace Images
 namespace Constants
 {
   constexpr uint24_t StanceToImageXRefFX = 0x005FFD;
+}
+
+namespace Music
+{
+  constexpr uint24_t Song_MainTheme = 0x006359;
+  constexpr uint24_t SFX_Death = 0x00AEF6;
+  constexpr uint24_t Songs = 0x00AF9A;
+  constexpr uint24_t SFXs = 0x00AF9D;
 }
 

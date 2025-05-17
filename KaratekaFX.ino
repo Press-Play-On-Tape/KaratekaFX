@@ -22,20 +22,20 @@
 // #define SPRITESU_RECT
 // #define SPRITESU_FX
 
-
-#ifdef SOUNDS_ATMLIB
-#include <ATMlib.h>
-#include "src/sounds/Sounds_ATMLib.h"
-#endif
-
 Arduboy2Ext arduboy;
 
 #ifdef SOUNDS_ARDUBOYTONES
 ArduboyTones sound(arduboy.audio.on);
 #endif
 
-#ifdef SOUNDS_ATMLIB
-ATMsynth ATM;
+#ifdef SOUNDS_SYNTHU
+#define SYNTHU_IMPLEMENTATION
+#define SYNTHU_NUM_CHANNELS 4
+#define SYNTHU_UPDATE_EVERY_N_FRAMES 1
+#define SYNTHU_ENABLE_SFX 1
+#define SYNTHU_FX_READDATABYTES_FUNC FX::readDataBytes
+#include "src/utils/SynthU.hpp"
+#define ABG_TIMER1
 #endif
 
 Stack <uint8_t, 30> playerStack;
@@ -86,18 +86,20 @@ void setup() {
 
   arduboy.boot();
   arduboy.safeMode(); 
-  arduboy.setFrameRate(27);
+  arduboy.setFrameRate(54);
   arduboy.initRandomSeed();
 
   FX::display(CLEAR_BUFFER);
 
-  #ifdef SOUNDS_ATMLIB
-  arduboy.audio.on;
-  #endif
-
   FX::begin(FX_DATA_PAGE, FX_SAVE_PAGE);
 //  EEPROM_Utils::loadCookie(cookie);
-  
+
+  #ifdef SOUNDS_SYNTHU
+  audioInit();
+  setAudioOn();
+  playSong(MusicSong::MainTheme);
+  #endif  
+
   gameStateDetails.setCurrState(GAME_SPLASH_SCREEN_INIT);
 
 }
@@ -110,6 +112,9 @@ void setup() {
 void loop() {
 
   if (!(arduboy.nextFrame())) return;
+
+  if (arduboy.frameCount % 2 == 0) {
+
   arduboy.pollButtons();
 // player.health = 240;//SJH
   switch (gameStateDetails.getCurrState()) {
@@ -273,7 +278,12 @@ void loop() {
   }
 
   FX::display(CLEAR_BUFFER);
-  
+  }
+
+  #ifndef SOUND_SYTHNU
+  audioUpdate();
+  #endif
+
 }
 
   
@@ -431,12 +441,6 @@ void play_loop() {
         #ifdef SOUNDS_ARDUBOYTONES
         if (arduboy.everyXFrames(ANIMATION_NUMBER_OF_FRAMES)) {
           sound.tones(ouch);
-        }
-        #endif 
-
-        #ifdef SOUNDS_ATMLIB
-        if (arduboy.everyXFrames(ANIMATION_NUMBER_OF_FRAMES)) {
-          ATM.play(ouch);
         }
         #endif 
 
@@ -715,5 +719,5 @@ void play_loop() {
     arduboy.setCursor(85, 1);
     arduboy.print(_action);
   #endif
-  
+
 }
