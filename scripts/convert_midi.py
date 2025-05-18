@@ -52,6 +52,8 @@ def convert(fin, fout, tracks=4, tps=48, vol=0.5, transpose=0, slowdown=1.0, vf=
                 if b > ticks: ticks = b
             else:
                 lownotes += 1
+    print('in:', fin)
+    print('out:', fout)                
     print('low notes:', lownotes)
     
     # sort notes by descending pitch (favor high/melody notes)
@@ -144,7 +146,7 @@ def convert_sym(sym, outfile, **args):
         kwargs[k] = v
     convert(
         sym + '.mid',
-        './music/' + outfile + '.bin',
+        './music/' + outfile + '.bin',5
         **kwargs)
  
 
@@ -157,7 +159,10 @@ def convert_sym(sym, outfile, **args):
 # convert_sym('../music/XPGain', 'SFX_XPGain', tracks=1)
 # convert_sym('../music/Glint', 'SFX_Glint', tracks=1)
 
-# convert_sym('../music/Empty', 'Empty', tracks=6, vol=1)
-# convert_sym('../music/BillieEilish', 'MainTheme', tracks=6, vol=1)
-#convert_sym('../music/Gorillas', 'MainTheme', tracks=2, vol=0.5)
-#convert_sym('../music/BananaPancakes', 'MainTheme', tracks=4, vol=0.5)
+convert_sym('../music/Track01', 'Track01', tracks=4, vol=1)
+convert_sym('../music/Track02', 'Track02', tracks=4, vol=1)
+convert_sym('../music/Track03', 'Track03', tracks=4, vol=1)
+convert_sym('../music/Track04', 'Track04', tracks=4, vol=1)
+convert_sym('../music/Track05', 'Track05', tracks=4, vol=1)
+convert_sym('../music/Track06', 'Track06', tracks=4, vol=1)
+convert_sym('../music/Track07', 'Track07', tracks=4, vol=1)

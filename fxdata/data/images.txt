@@ -7,6 +7,24 @@ namespace Images {
     image_t TheEnd                  = "../images/Titles/TheEnd.png"
     image_t IntroText               = "../images/Entrance/Text.png"
 
+    image_t Emperor                 = "../images/Emperor_41x64.png"
+    image_t Emperor_Arm_Normal      = "../images/EmperorArmNormal_14x24.png"
+    image_t Emperor_Arm_Out         = "../images/EmperorArmOut_25x16.png"
+
+    image_t Princess_00             = "../images/Princess/Princess_00.png"
+    image_t Princess_01             = "../images/Princess/Princess_01.png"
+    image_t Princess_02             = "../images/Princess/Princess_02.png"
+    image_t Princess_03             = "../images/Princess/Princess_03.png"
+    image_t Princess_04             = "../images/Princess/Princess_04.png"
+    image_t Princess_05             = "../images/Princess/Princess_05.png"
+    image_t Princess_06             = "../images/Princess/Princess_06.png"
+    image_t Princess_07             = "../images/Princess/Princess_07.png"
+    image_t Princess_08             = "../images/Princess/Princess_08.png"
+    image_t Princess_09             = "../images/Princess/Princess_09.png"
+    image_t Princess_10             = "../images/Princess/Princess_10.png"
+    image_t Princess_11             = "../images/Princess/Princess_11.png"
+
+    image_t Princess_Seat           = "../images/Princess_Seat.png"
 
     image_t Arrow_Left              = "../images/ArrowLeft.png"
     image_t Arrow_Right             = "../images/ArrowRight.png"
@@ -43,7 +61,7 @@ namespace Images {
     image_t Body20                  = "../images/Body20_14x16.png"
     image_t Body21                  = "../images/Body21_14x16.png"
     image_t Body22                  = "../images/Body22_12x16.png"
-    image_t Body23                  = "../images/Body23_19x16.png"
+    image_t Body23                  = "../images/Body23_13x16.png"
     image_t Body24                  = "../images/Body24_28x16.png"
     image_t Body25                  = "../images/Body25_27x16.png"
 

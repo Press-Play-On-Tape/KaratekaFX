@@ -9,19 +9,125 @@ void drawPrincessBackground_1() {
   uint8_t x = 72;
 
   for (int y = 50; y < 64; y = y + 2) {
-    arduboy.drawFastHLine(x, y, WIDTH - x);    
+    // arduboy.drawFastHLine(x, y, WIDTH - x);   
+    drawHorizontalDottedLine(x, WIDTH , y); 
     x = x + (y < 56 ? -20 : 20);
   }
 
   FX::drawBitmap(16, 6, Images::ArchInt_Right, 0, dbmMasked);
-  arduboy.drawCompressedMirror(89, 19, princess_seat_mask, BLACK, false);
-  arduboy.drawCompressedMirror(89, 19, princess_seat, WHITE, false);
+//   arduboy.drawCompressedMirror(89, 19, princess_seat_mask, BLACK, false);
+//   arduboy.drawCompressedMirror(89, 19, princess_seat, WHITE, false);
+//   FX::drawBitmap(89, 19, Images::Princess_Seat, 0, dbmMasked);
+  FX::drawBitmap(87, 17, Images::Princess_Seat, 0, dbmMasked);
 
 }
 
 void drawPrincessBackground_2() {
   
   FX::drawBitmap(0, 3, Images::ArchInt_Left, 0, dbmMasked);
+
+}
+
+
+
+
+uint8_t dungeonIdx = 0;
+
+
+
+void drawEmperorGround() {
+
+   for (int i=54; i< 64; i+=2) {
+
+      drawHorizontalDottedLine(i % 2, WIDTH, i);
+
+    }
+
+}
+
+
+
+void showSceneDungeon1() {
+
+    drawEmperorGround();
+    FX::drawBitmap(99, 6, Images::ArchInt_Right, 1, dbmMasked);
+
+    // int8_t x = dungeoon_1_x[dungeonIdx];
+    // uint8_t i = dungeoon_1_i[dungeonIdx];
+    int8_t x = FX::readIndexedUInt8(Constants::Dungeon_1_x, dungeonIdx);
+    uint8_t i = FX::readIndexedUInt8(Constants::Dungeon_1_i, dungeonIdx);	
+    uint24_t img = FX::readIndexedUInt24(Images::Princess, i);
+
+	if (arduboy.frameCount % 8 == 0 ) {
+
+		dungeonIdx++;
+
+		if (dungeonIdx == 73) {
+		gameStateDetails.setCurrState(GAME_STATE_FOLLOW_SEQUENCE);
+		dungeonIdx = 0;
+		}
+
+	}
+
+  	if (arduboy.justPressed(A_BUTTON)) {
+
+		gameStateDetails.sequence++;
+		gameStateDetails.setCurrState(GAME_STATE_FOLLOW_SEQUENCE);
+		dungeonIdx = 0;
+
+    }
+
+    FX::drawBitmap(x, 11, img, 0, dbmMasked);
+
+	if (dungeonIdx > 15) {
+	    FX::drawBitmap(10, 3, Images::Emperor, 1, dbmMasked);
+	}
+	else {
+	    FX::drawBitmap(10, 3, Images::Emperor, 3, dbmMasked);
+	}
+
+	if (dungeonIdx > 10 && dungeonIdx < 40) {
+		FX::drawBitmap(37, 18, Images::Emperor_Arm_Out, 1, dbmMasked);
+	}
+	else {
+		FX::drawBitmap(37, 20, Images::Emperor_Arm_Normal, 1, dbmMasked);
+	}
+
+    FX::drawBitmap(113, 3, Images::ArchInt_Left, 1, dbmMasked);
+
+}
+
+
+
+void showSceneDungeon2() {
+
+	drawPrincessBackground_1();
+
+    // int8_t x = dungeoon_2_x[dungeonIdx];
+    // uint8_t i = dungeoon_2_i[dungeonIdx];
+    int8_t x = FX::readIndexedUInt8(Constants::Dungeon_2_x, dungeonIdx);
+    uint8_t i = FX::readIndexedUInt8(Constants::Dungeon_2_i, dungeonIdx);
+    uint24_t img = FX::readIndexedUInt24(Images::Princess, i);
+
+	if (arduboy.frameCount % 8 == 0 ) {
+
+		dungeonIdx++;
+
+		if (dungeonIdx == 55) {
+		gameStateDetails.setCurrState(GAME_STATE_FOLLOW_SEQUENCE);
+		}
+
+	}
+
+  	if (arduboy.justPressed(A_BUTTON)) {
+
+        gameStateDetails.setCurrState(GAME_STATE_FOLLOW_SEQUENCE);
+        dungeonIdx = 0;
+
+    }
+
+    FX::drawBitmap(x, 11, img, 0, dbmMasked);
+	drawPrincessBackground_2();
 
 }
 
@@ -101,7 +207,7 @@ void showScene() {
     
         }
     
-        if (enemy.xPos < 128 && gameStateDetails.sequence != 31) renderEnemyStance(arduboy, enemy.xPos, enemy.yPos, enemy.stance);
+        if (enemy.xPos < 128 && gameStateDetails.sequence != 33) renderEnemyStance(arduboy, enemy.xPos, enemy.yPos, enemy.stance);
 
       default:
         break;
@@ -228,7 +334,7 @@ void finalScene() {
     }
 
     renderPlayerStance(arduboy, player.xPos, player.yPos, player.stance);
-    if (gameStateDetails.sequence != 31) renderEnemyStance(arduboy, enemy.xPos, enemy.yPos, enemy.stance);
+    if (gameStateDetails.sequence != 33) renderEnemyStance(arduboy, enemy.xPos, enemy.yPos, enemy.stance);
 
     drawPrincessBackground_2();
     

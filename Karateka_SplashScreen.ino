@@ -16,7 +16,8 @@ void splashScreen_Init() {
 void splashScreen() { 
 
     if (arduboy.justPressed(A_BUTTON) || arduboy.justPressed(B_BUTTON)) {
-        
+
+//gameStateDetails.sequence = 4;//SJH      
         gameStateDetails.setCurrState(GAME_STATE_FOLLOW_SEQUENCE);
 
     }

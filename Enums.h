@@ -8,7 +8,6 @@
 #define _DEBUG_STRIKING_RANGE
 
 #define JORDAN_MECHNER
-#define _SOUNDS_ARDUBOYTONES
 #define SOUNDS_SYNTHU
 #define _USE_DIFFERENT_BAMS
 #define USE_ENHANCED_BAM3
@@ -16,30 +15,38 @@
 #define GAME_STATE_TITLE_SCENE                    0
 #define GAME_STATE_JM_SCENE                       1
 #define GAME_STATE_INTRO_TEXT                     2
-#define GAME_STATE_CASTLE_SCENE                   3
-#define GAME_STATE_EMPEROR_INIT                   4
-#define GAME_STATE_EMPEROR                        5
-#define GAME_STATE_PLAY_INIT                      6
-#define GAME_STATE_FOLLOW_SEQUENCE                7
-#define GAME_STATE_PLAY                           8
-#define GAME_STATE_ENEMY_APPROACH_INIT            9
-#define GAME_STATE_ENEMY_APPROACH                 10
-#define GAME_STATE_EAGLE_APPROACH_INIT            11
-#define GAME_STATE_EAGLE_APPROACH                 12
-#define GAME_STATE_THE_END                        13
-#define GAME_STATE_GO_THROUGH_GATE                14
-#define GAME_STATE_ENTRANCE                       15
-#define GAME_STATE_ENTRANCE_INIT                  16
-#define GAME_STATE_PRINCESS_INIT                  17
-#define GAME_STATE_PRINCESS                       18
-#define GAME_STATE_FINAL_SCENE                    19
-#define GAME_SPLASH_SCREEN_INIT                   20
-#define GAME_SPLASH_SCREEN                        21
+#define GAME_STATE_SEND_TO_DUNGEON_1              3
+#define GAME_STATE_SEND_TO_DUNGEON_2              4
+#define GAME_STATE_CASTLE_SCENE                   5
+#define GAME_STATE_EMPEROR_INIT                   6
+#define GAME_STATE_EMPEROR                        7
+#define GAME_STATE_PLAY_INIT                      8
+#define GAME_STATE_FOLLOW_SEQUENCE                9
+#define GAME_STATE_PLAY                           10
+#define GAME_STATE_ENEMY_APPROACH_INIT            11
+#define GAME_STATE_ENEMY_APPROACH                 12
+#define GAME_STATE_EAGLE_APPROACH_INIT            13
+#define GAME_STATE_EAGLE_APPROACH                 14
+#define GAME_STATE_THE_END                        15
+#define GAME_STATE_GO_THROUGH_GATE                16
+#define GAME_STATE_ENTRANCE                       17
+#define GAME_STATE_ENTRANCE_INIT                  18
+#define GAME_STATE_PRINCESS_INIT                  19
+#define GAME_STATE_PRINCESS                       20
+#define GAME_STATE_FINAL_SCENE                    21
+#define GAME_SPLASH_SCREEN_INIT                   22
+#define GAME_SPLASH_SCREEN                        23
 
 #define GAME_STATE_SEQ_SIZE                       6
 
 enum class MusicSong : uint8_t {
-    MainTheme,
+    Track01,
+    Track02,
+    Track03,
+    Track04,
+    Track05,
+    Track06,
+    Track07,
 };
 
 enum class MusicSFX : uint8_t {
@@ -109,6 +116,8 @@ const uint8_t PROGMEM gameSequence[] = {
   GAME_STATE_JM_SCENE,                    15,     0,          0,          0,          0,
   #endif
   GAME_STATE_INTRO_TEXT,                  15,     0,          0,          0,          0,
+  GAME_STATE_SEND_TO_DUNGEON_1,           0,      0,          0,          0,          0,
+  GAME_STATE_SEND_TO_DUNGEON_2,           0,      0,          0,          0,          0,
   GAME_STATE_CASTLE_SCENE,                15,     0,          0,          0,          0,
   GAME_STATE_ENTRANCE_INIT,               0,      0,          0,          1,          0,
   GAME_STATE_PLAY_INIT,                   25,     0,          0,          1,          0,

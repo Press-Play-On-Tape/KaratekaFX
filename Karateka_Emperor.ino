@@ -19,11 +19,7 @@ void emperor_loop() {
 
     arduboy.drawFastHLine(0, 52, WIDTH);
 
-    for (int i=54; i< 64; i+=2) {
-
-      drawHorizontalDottedLine(i % 2, WIDTH, i);
-
-    }
+    drawEmperorGround();
     
     if (enemyStack.isEmpty()) {
 
@@ -113,17 +109,22 @@ void emperor_loop() {
       
     }
 
-    arduboy.drawCompressedMirror(92, 45, emperor_mask, BLACK, false);
-    arduboy.drawCompressedMirror(87, 4, emperor, WHITE, false);
+
+    // arduboy.drawCompressedMirror(92, 45, emperor_mask, BLACK, false);
+    // arduboy.drawCompressedMirror(87, 4, emperor, WHITE, false);
+    FX::drawBitmap(86, 3, Images::Emperor, 0, dbmMasked);
 
     if (emperorMode >= EMPEROR_LIFT_ARM && emperorMode < EMPEROR_MODE_FIGHTER_LEAVE) {
 
-      arduboy.drawCompressedMirror(70, 19, emperor_arm_out, WHITE, false);
+      FX::drawBitmap(70, 18, Images::Emperor_Arm_Out, 0, dbmMasked);
+//      arduboy.drawCompressedMirror(71, 19, emperor_arm_out, WHITE, false);
       
     }
     else {
 
-      arduboy.drawCompressedMirror(87, 21, emperor_arm_normal, WHITE, false);
+      FX::drawBitmap(86, 20, Images::Emperor_Arm_Normal, 0, dbmMasked);
+
+      // arduboy.drawCompressedMirror(87, 21, emperor_arm_normal, WHITE, false);
       
     }
 

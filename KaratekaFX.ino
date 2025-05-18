@@ -1,8 +1,3 @@
-// #define ABG_IMPLEMENTATION
-// #define ABG_TIMER1
-// #define ABG_SYNC_PARK_ROW
-// #define SPRITESU_IMPLEMENTATION
-
 #include <ArduboyFX.h>  
 #include "fxdata/fxdata.h"
 #include "src/utils/Arduboy2Ext.h"
@@ -12,21 +7,7 @@
 #include "src/images/images.h"
 #include "Enums.h"
 
-#ifdef SOUNDS_ARDUBOYTONES
-#include <ArduboyTones.h>
-#include "src/sounds/Sounds_ArduboyTones.h"
-#endif
-
-// #define SPRITESU_OVERWRITE
-// #define SPRITESU_PLUSMASK
-// #define SPRITESU_RECT
-// #define SPRITESU_FX
-
 Arduboy2Ext arduboy;
-
-#ifdef SOUNDS_ARDUBOYTONES
-ArduboyTones sound(arduboy.audio.on);
-#endif
 
 #ifdef SOUNDS_SYNTHU
 #define SYNTHU_IMPLEMENTATION
@@ -97,7 +78,7 @@ void setup() {
   #ifdef SOUNDS_SYNTHU
   audioInit();
   setAudioOn();
-  playSong(MusicSong::MainTheme);
+  playSong(MusicSong::Track01);
   #endif  
 
   gameStateDetails.setCurrState(GAME_SPLASH_SCREEN_INIT);
@@ -116,7 +97,7 @@ void loop() {
   if (arduboy.frameCount % 2 == 0) {
 
   arduboy.pollButtons();
-// player.health = 240;//SJH
+ player.health = 240;//SJH
   switch (gameStateDetails.getCurrState()) {
 
     case GAME_SPLASH_SCREEN_INIT:
@@ -187,6 +168,14 @@ void loop() {
 
       }
 
+      break;
+
+    case GAME_STATE_SEND_TO_DUNGEON_1:
+      showSceneDungeon1();
+      break;
+
+    case GAME_STATE_SEND_TO_DUNGEON_2:
+      showSceneDungeon2();
       break;
 
     case GAME_STATE_JM_SCENE:
@@ -496,8 +485,8 @@ void play_loop() {
 
   if (enemy.xPosDelta != 0) { enemy.xPos = enemy.xPos + enemy.xPosDelta; }
   renderPlayerStance(arduboy, player.xPos, player.yPos, player.stance);
-  if (gameStateDetails.enemyType != ENEMY_TYPE_NONE && enemy.xPos < 128 && gameStateDetails.sequence != 31) renderEnemyStance(arduboy, enemy.xPos, enemy.yPos, enemy.stance);
-  if (gameStateDetails.prevState == GAME_STATE_GO_THROUGH_GATE && gameStateDetails.sequence != 31) renderEnemyStance(arduboy, enemy.xPos, enemy.yPos, STANCE_DEATH_6); 
+  if (gameStateDetails.enemyType != ENEMY_TYPE_NONE && enemy.xPos < 128 && gameStateDetails.sequence != 33) renderEnemyStance(arduboy, enemy.xPos, enemy.yPos, enemy.stance);
+  if (gameStateDetails.prevState == GAME_STATE_GO_THROUGH_GATE && gameStateDetails.sequence != 33) renderEnemyStance(arduboy, enemy.xPos, enemy.yPos, STANCE_DEATH_6); 
   
   if (gameStateDetails.extArch == ARCH_RIGHT_HAND) {
     FX::drawBitmap(gameStateDetails.archXPos + 17, -2, Images::ArchExt_Right, 0, dbmMasked);

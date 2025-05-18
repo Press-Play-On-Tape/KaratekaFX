@@ -6,8 +6,8 @@ using uint24_t = __uint24;
 
 // Initialize FX hardware using  FX::begin(FX_DATA_PAGE); in the setup() function.
 
-constexpr uint16_t FX_DATA_PAGE  = 0xff40;
-constexpr uint24_t FX_DATA_BYTES = 44960;
+constexpr uint16_t FX_DATA_PAGE  = 0xfe0d;
+constexpr uint24_t FX_DATA_BYTES = 123463;
 
 constexpr uint16_t FX_SAVE_PAGE  = 0xfff0;
 constexpr uint24_t FX_SAVE_BYTES = 2;
@@ -39,196 +39,278 @@ namespace Images
   constexpr uint16_t IntroTextWidth  = 128;
   constexpr uint16_t IntroTextHeight = 720;
 
-  constexpr uint24_t Arrow_Left = 0x003B8E;
+  constexpr uint24_t Emperor = 0x003B8E;
+  constexpr uint16_t EmperorWidth  = 41;
+  constexpr uint16_t EmperorHeight = 64;
+  constexpr uint8_t  EmperorFrames = 4;
+
+  constexpr uint24_t Emperor_Arm_Normal = 0x0045D2;
+  constexpr uint16_t Emperor_Arm_Normal_width  = 14;
+  constexpr uint16_t Emperor_Arm_Normal_height = 24;
+  constexpr uint8_t  Emperor_Arm_Normal_frames = 2;
+
+  constexpr uint24_t Emperor_Arm_Out = 0x00467E;
+  constexpr uint16_t Emperor_Arm_Out_width  = 25;
+  constexpr uint16_t Emperor_Arm_Out_height = 16;
+  constexpr uint8_t  Emperor_Arm_Out_frames = 2;
+
+  constexpr uint24_t Princess_00 = 0x00474A;
+  constexpr uint16_t Princess_00_width  = 15;
+  constexpr uint16_t Princess_00_height = 48;
+
+  constexpr uint24_t Princess_01 = 0x004802;
+  constexpr uint16_t Princess_01_width  = 15;
+  constexpr uint16_t Princess_01_height = 48;
+
+  constexpr uint24_t Princess_02 = 0x0048BA;
+  constexpr uint16_t Princess_02_width  = 15;
+  constexpr uint16_t Princess_02_height = 48;
+
+  constexpr uint24_t Princess_03 = 0x004972;
+  constexpr uint16_t Princess_03_width  = 17;
+  constexpr uint16_t Princess_03_height = 48;
+
+  constexpr uint24_t Princess_04 = 0x004A42;
+  constexpr uint16_t Princess_04_width  = 13;
+  constexpr uint16_t Princess_04_height = 48;
+
+  constexpr uint24_t Princess_05 = 0x004AE2;
+  constexpr uint16_t Princess_05_width  = 16;
+  constexpr uint16_t Princess_05_height = 48;
+
+  constexpr uint24_t Princess_06 = 0x004BA6;
+  constexpr uint16_t Princess_06_width  = 18;
+  constexpr uint16_t Princess_06_height = 48;
+
+  constexpr uint24_t Princess_07 = 0x004C82;
+  constexpr uint16_t Princess_07_width  = 15;
+  constexpr uint16_t Princess_07_height = 48;
+
+  constexpr uint24_t Princess_08 = 0x004D3A;
+  constexpr uint16_t Princess_08_width  = 20;
+  constexpr uint16_t Princess_08_height = 48;
+
+  constexpr uint24_t Princess_09 = 0x004E2E;
+  constexpr uint16_t Princess_09_width  = 29;
+  constexpr uint16_t Princess_09_height = 48;
+
+  constexpr uint24_t Princess_10 = 0x004F8E;
+  constexpr uint16_t Princess_10_width  = 37;
+  constexpr uint16_t Princess_10_height = 48;
+
+  constexpr uint24_t Princess_11 = 0x00514E;
+  constexpr uint16_t Princess_11_width  = 37;
+  constexpr uint16_t Princess_11_height = 48;
+
+  constexpr uint24_t Princess_Seat = 0x00530E;
+  constexpr uint16_t Princess_Seat_width  = 40;
+  constexpr uint16_t Princess_Seat_height = 40;
+
+  constexpr uint24_t Arrow_Left = 0x0054A2;
   constexpr uint16_t Arrow_Left_width  = 3;
   constexpr uint16_t Arrow_Left_height = 8;
 
-  constexpr uint24_t Arrow_Right = 0x003B95;
+  constexpr uint24_t Arrow_Right = 0x0054A9;
   constexpr uint16_t Arrow_Right_width  = 3;
   constexpr uint16_t Arrow_Right_height = 8;
 
-  constexpr uint24_t Backdrop = 0x003B9C;
+  constexpr uint24_t Backdrop = 0x0054B0;
   constexpr uint16_t BackdropWidth  = 48;
   constexpr uint16_t BackdropHeight = 64;
 
-  constexpr uint24_t Backdrop2 = 0x003EA0;
+  constexpr uint24_t Backdrop2 = 0x0057B4;
   constexpr uint16_t Backdrop2Width  = 48;
   constexpr uint16_t Backdrop2Height = 64;
 
-  constexpr uint24_t Crevice = 0x0041A4;
+  constexpr uint24_t Crevice = 0x005AB8;
   constexpr uint16_t CreviceWidth  = 14;
   constexpr uint16_t CreviceHeight = 24;
 
-  constexpr uint24_t ArchExt_Left = 0x0041D2;
+  constexpr uint24_t ArchExt_Left = 0x005AE6;
   constexpr uint16_t ArchExt_Left_width  = 17;
   constexpr uint16_t ArchExt_Left_height = 64;
   constexpr uint8_t  ArchExt_Left_frames = 2;
 
-  constexpr uint24_t ArchExt_Right = 0x0043F6;
+  constexpr uint24_t ArchExt_Right = 0x005D0A;
   constexpr uint16_t ArchExt_Right_width  = 22;
   constexpr uint16_t ArchExt_Right_height = 64;
   constexpr uint8_t  ArchExt_Right_frames = 2;
 
-  constexpr uint24_t ArchInt_Left = 0x0046BA;
+  constexpr uint24_t ArchInt_Left = 0x005FCE;
   constexpr uint16_t ArchInt_Left_width  = 16;
   constexpr uint16_t ArchInt_Left_height = 56;
   constexpr uint8_t  ArchInt_Left_frames = 2;
 
-  constexpr uint24_t ArchInt_Right = 0x00487E;
+  constexpr uint24_t ArchInt_Right = 0x006192;
   constexpr uint16_t ArchInt_Right_width  = 15;
   constexpr uint16_t ArchInt_Right_height = 56;
   constexpr uint8_t  ArchInt_Right_frames = 2;
 
-  constexpr uint24_t Head1 = 0x004A26;
+  constexpr uint24_t Head1 = 0x00633A;
   constexpr uint16_t Head1Width  = 9;
   constexpr uint16_t Head1Height = 16;
 
-  constexpr uint24_t Head2 = 0x004A4E;
+  constexpr uint24_t Head2 = 0x006362;
   constexpr uint16_t Head2Width  = 9;
   constexpr uint16_t Head2Height = 16;
   constexpr uint8_t  Head2Frames = 2;
 
-  constexpr uint24_t Volcano = 0x004A9A;
+  constexpr uint24_t Volcano = 0x0063AE;
   constexpr uint16_t VolcanoWidth  = 128;
   constexpr uint16_t VolcanoHeight = 24;
 
-  constexpr uint24_t Body1 = 0x004C1E;
+  constexpr uint24_t Body1 = 0x006532;
   constexpr uint16_t Body1Width  = 23;
   constexpr uint16_t Body1Height = 16;
   constexpr uint8_t  Body1Frames = 2;
 
-  constexpr uint24_t Body2 = 0x004CDA;
+  constexpr uint24_t Body2 = 0x0065EE;
   constexpr uint16_t Body2Width  = 23;
   constexpr uint16_t Body2Height = 16;
   constexpr uint8_t  Body2Frames = 2;
 
-  constexpr uint24_t Body3 = 0x004D96;
+  constexpr uint24_t Body3 = 0x0066AA;
   constexpr uint16_t Body3Width  = 26;
   constexpr uint16_t Body3Height = 16;
   constexpr uint8_t  Body3Frames = 2;
 
-  constexpr uint24_t Body4 = 0x004E6A;
+  constexpr uint24_t Body4 = 0x00677E;
   constexpr uint16_t Body4Width  = 25;
   constexpr uint16_t Body4Height = 16;
   constexpr uint8_t  Body4Frames = 2;
 
-  constexpr uint24_t Body5 = 0x004F36;
+  constexpr uint24_t Body5 = 0x00684A;
   constexpr uint16_t Body5Width  = 26;
   constexpr uint16_t Body5Height = 16;
   constexpr uint8_t  Body5Frames = 2;
 
-  constexpr uint24_t Body6 = 0x00500A;
+  constexpr uint24_t Body6 = 0x00691E;
   constexpr uint16_t Body6Width  = 24;
   constexpr uint16_t Body6Height = 24;
   constexpr uint8_t  Body6Frames = 2;
 
-  constexpr uint24_t Body7 = 0x00512E;
+  constexpr uint24_t Body7 = 0x006A42;
   constexpr uint16_t Body7Width  = 35;
   constexpr uint16_t Body7Height = 16;
   constexpr uint8_t  Body7Frames = 2;
 
-  constexpr uint24_t Body8 = 0x00524A;
+  constexpr uint24_t Body8 = 0x006B5E;
   constexpr uint16_t Body8Width  = 33;
   constexpr uint16_t Body8Height = 24;
   constexpr uint8_t  Body8Frames = 2;
 
-  constexpr uint24_t Body9 = 0x0053DA;
+  constexpr uint24_t Body9 = 0x006CEE;
   constexpr uint16_t Body9Width  = 31;
   constexpr uint16_t Body9Height = 24;
   constexpr uint8_t  Body9Frames = 2;
 
-  constexpr uint24_t Body10 = 0x005552;
+  constexpr uint24_t Body10 = 0x006E66;
   constexpr uint16_t Body10Width  = 30;
   constexpr uint16_t Body10Height = 16;
   constexpr uint8_t  Body10Frames = 2;
 
-  constexpr uint24_t Body11 = 0x005646;
+  constexpr uint24_t Body11 = 0x006F5A;
   constexpr uint16_t Body11Width  = 30;
   constexpr uint16_t Body11Height = 16;
   constexpr uint8_t  Body11Frames = 2;
 
-  constexpr uint24_t Body12 = 0x00573A;
+  constexpr uint24_t Body12 = 0x00704E;
   constexpr uint16_t Body12Width  = 33;
   constexpr uint16_t Body12Height = 24;
   constexpr uint8_t  Body12Frames = 2;
 
-  constexpr uint24_t Body13 = 0x0058CA;
+  constexpr uint24_t Body13 = 0x0071DE;
   constexpr uint16_t Body13Width  = 13;
   constexpr uint16_t Body13Height = 16;
   constexpr uint8_t  Body13Frames = 2;
 
-  constexpr uint24_t Body14 = 0x005936;
+  constexpr uint24_t Body14 = 0x00724A;
   constexpr uint16_t Body14Width  = 9;
   constexpr uint16_t Body14Height = 16;
   constexpr uint8_t  Body14Frames = 2;
 
-  constexpr uint24_t Body15 = 0x005982;
+  constexpr uint24_t Body15 = 0x007296;
   constexpr uint16_t Body15Width  = 14;
   constexpr uint16_t Body15Height = 24;
   constexpr uint8_t  Body15Frames = 2;
 
-  constexpr uint24_t Body16 = 0x005A2E;
+  constexpr uint24_t Body16 = 0x007342;
   constexpr uint16_t Body16Width  = 16;
   constexpr uint16_t Body16Height = 16;
   constexpr uint8_t  Body16Frames = 2;
 
-  constexpr uint24_t Body17 = 0x005AB2;
+  constexpr uint24_t Body17 = 0x0073C6;
   constexpr uint16_t Body17Width  = 11;
   constexpr uint16_t Body17Height = 16;
   constexpr uint8_t  Body17Frames = 2;
 
-  constexpr uint24_t Body18 = 0x005B0E;
+  constexpr uint24_t Body18 = 0x007422;
   constexpr uint16_t Body18Width  = 16;
   constexpr uint16_t Body18Height = 16;
   constexpr uint8_t  Body18Frames = 2;
 
-  constexpr uint24_t Body19 = 0x005B92;
+  constexpr uint24_t Body19 = 0x0074A6;
   constexpr uint16_t Body19Width  = 24;
   constexpr uint16_t Body19Height = 16;
   constexpr uint8_t  Body19Frames = 2;
 
-  constexpr uint24_t Body20 = 0x005C56;
+  constexpr uint24_t Body20 = 0x00756A;
   constexpr uint16_t Body20Width  = 14;
   constexpr uint16_t Body20Height = 16;
   constexpr uint8_t  Body20Frames = 2;
 
-  constexpr uint24_t Body21 = 0x005CCA;
+  constexpr uint24_t Body21 = 0x0075DE;
   constexpr uint16_t Body21Width  = 14;
   constexpr uint16_t Body21Height = 16;
   constexpr uint8_t  Body21Frames = 2;
 
-  constexpr uint24_t Body22 = 0x005D3E;
+  constexpr uint24_t Body22 = 0x007652;
   constexpr uint16_t Body22Width  = 12;
   constexpr uint16_t Body22Height = 16;
   constexpr uint8_t  Body22Frames = 2;
 
-  constexpr uint24_t Body23 = 0x005DA2;
-  constexpr uint16_t Body23Width  = 19;
+  constexpr uint24_t Body23 = 0x0076B6;
+  constexpr uint16_t Body23Width  = 13;
   constexpr uint16_t Body23Height = 16;
+  constexpr uint8_t  Body23Frames = 2;
 
-  constexpr uint24_t Body24 = 0x005DF2;
+  constexpr uint24_t Body24 = 0x007722;
   constexpr uint16_t Body24Width  = 28;
   constexpr uint16_t Body24Height = 16;
   constexpr uint8_t  Body24Frames = 2;
 
-  constexpr uint24_t Body25 = 0x005ED6;
+  constexpr uint24_t Body25 = 0x007806;
   constexpr uint16_t Body25Width  = 27;
   constexpr uint16_t Body25Height = 16;
   constexpr uint8_t  Body25Frames = 2;
 
-  constexpr uint24_t Bodies = 0x005FB2;
+  constexpr uint24_t Bodies = 0x0078E2;
+}
+
+namespace Images
+{
+  constexpr uint24_t Princess = 0x00792D;
 }
 
 namespace Constants
 {
-  constexpr uint24_t StanceToImageXRefFX = 0x005FFD;
+  constexpr uint24_t Dungeon_1_x = 0x007951;
+  constexpr uint24_t Dungeon_1_i = 0x007999;
+  constexpr uint24_t Dungeon_2_x = 0x0079E1;
+  constexpr uint24_t Dungeon_2_i = 0x007A19;
 }
 
 namespace Music
 {
-  constexpr uint24_t Song_MainTheme = 0x006359;
-  constexpr uint24_t SFX_Death = 0x00AEF6;
-  constexpr uint24_t Songs = 0x00AF9A;
-  constexpr uint24_t SFXs = 0x00AF9D;
+  constexpr uint24_t Song_Track01 = 0x007A51;
+  constexpr uint24_t Song_Track02 = 0x007F65;
+  constexpr uint24_t Song_Track03 = 0x008160;
+  constexpr uint24_t Song_Track04 = 0x011A3A;
+  constexpr uint24_t Song_Track05 = 0x011D39;
+  constexpr uint24_t Song_Track06 = 0x0120AD;
+  constexpr uint24_t Song_Track07 = 0x0126EC;
+  constexpr uint24_t SFX_Death = 0x01E18B;
+  constexpr uint24_t Songs = 0x01E22F;
+  constexpr uint24_t SFXs = 0x01E244;
 }
 
