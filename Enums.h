@@ -51,6 +51,8 @@ enum class MusicSong : uint8_t {
 
 enum class MusicSFX : uint8_t {
     SFX_Death,
+    SFX_PlayerBlip,
+    SFX_EnemyBlip,
 };
 
 struct Entity {

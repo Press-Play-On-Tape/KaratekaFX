@@ -12,7 +12,7 @@ void audioUpdate() {
 
     // auto v = soundSettings.getVolume();
 
-    uint8_t v = 58;
+    uint8_t v = 10;
 
     if (SynthU::playingSFX()) {
 
@@ -33,8 +33,8 @@ void audioInit() {
     SynthU::setup();
     // SynthU::setVolume(soundSettings.getVolume());
     // SynthU::setVolumeSFX(soundSettings.getVolume());
-    SynthU::setVolume(58);
-    SynthU::setVolumeSFX(58);
+    SynthU::setVolume(10);
+    SynthU::setVolumeSFX(10);
 
 }
 

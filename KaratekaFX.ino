@@ -11,7 +11,7 @@ Arduboy2Ext arduboy;
 
 #ifdef SOUNDS_SYNTHU
 #define SYNTHU_IMPLEMENTATION
-#define SYNTHU_NUM_CHANNELS 4
+#define SYNTHU_NUM_CHANNELS 2
 #define SYNTHU_UPDATE_EVERY_N_FRAMES 1
 #define SYNTHU_ENABLE_SFX 1
 #define SYNTHU_FX_READDATABYTES_FUNC FX::readDataBytes
@@ -78,7 +78,6 @@ void setup() {
   #ifdef SOUNDS_SYNTHU
   audioInit();
   setAudioOn();
-  playSong(MusicSong::Track01);
   #endif  
 
   gameStateDetails.setCurrState(GAME_SPLASH_SCREEN_INIT);
@@ -97,7 +96,7 @@ void loop() {
   if (arduboy.frameCount % 2 == 0) {
 
   arduboy.pollButtons();
- player.health = 240;//SJH
+//  player.health = 240;//SJH
   switch (gameStateDetails.getCurrState()) {
 
     case GAME_SPLASH_SCREEN_INIT:
@@ -124,6 +123,14 @@ void loop() {
       {
         gameStateDetails.setCurrState(pgm_read_byte(&gameSequence[ (gameStateDetails.sequence * GAME_STATE_SEQ_SIZE) ])); 
         gameStateDetails.delayInterval = pgm_read_byte(&gameSequence[ (gameStateDetails.sequence * GAME_STATE_SEQ_SIZE) + 1]); 
+
+        if (gameStateDetails.getCurrState() == GAME_STATE_ENTRANCE_INIT) {
+          playSong(MusicSong::Track01);
+        }
+
+        else if (gameStateDetails.getCurrState() == GAME_STATE_FINAL_SCENE) {
+          playSong(MusicSong::Track07);
+        }
       
         uint8_t arches = pgm_read_byte(&gameSequence[ (gameStateDetails.sequence * GAME_STATE_SEQ_SIZE) + 2]);
         gameStateDetails.intArch = (arches <= 2 ? arches : 0); 
@@ -424,7 +431,18 @@ void play_loop() {
         playerHit = inStrikingRange(getActionFromStance(enemy.stance), enemy.xPos, ENEMY_TYPE_PERSON, player.stance, player.xPos);
 
       }
+
       if (playerHit > 0 || enemyHit > 0) {
+
+        if (playerHit > 0) {
+        // Serial.println("SFX_PlayerBlip");
+          playSFX(MusicSFX::SFX_PlayerBlip);
+        }
+
+        if (enemyHit > 0) {
+        // Serial.println("SFX_EnemyBlip");
+          playSFX(MusicSFX::SFX_EnemyBlip);
+        }
 
 
         #ifdef SOUNDS_ARDUBOYTONES
@@ -559,6 +577,10 @@ void play_loop() {
             enemyImmediateRetreat = (random(0, 3) == 0);    // Should the enemy retreat immediately?
           
         }
+
+        if (enemy.health == 0) {
+          playSong(MusicSong::Track02);
+        }
       
       }
       else {
@@ -596,7 +618,11 @@ void play_loop() {
 
         enemy.health = (enemy.health + HEALTH_REGAIN_POINTS < enemy.regainLimit ? enemy.health + HEALTH_REGAIN_POINTS : enemy.regainLimit);
         enemy.regain = 0;
-                
+
+        if (enemy.health == 0) {
+          playSong(MusicSong::Track02);
+        }
+
       }
     
     }
@@ -612,6 +638,10 @@ void play_loop() {
     playerStack.push(STANCE_DEATH_6, STANCE_DEATH_5, STANCE_DEATH_4);
     playerStack.push(STANCE_DEATH_3, STANCE_DEATH_2, STANCE_DEATH_1);
     player.dead = true;
+
+    if (player.dead) {
+      playSong(MusicSong::Track06);
+    }
 
     if (eagleMode == EAGLE_MODE_NONE || eagleMode == EAGLE_MODE_FLY_INIT) {
 

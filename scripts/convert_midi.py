@@ -144,9 +144,11 @@ def convert_sym(sym, outfile, **args):
         }
     for k, v in args.items():
         kwargs[k] = v
+    print(sym)
+    print(outfile)
     convert(
         sym + '.mid',
-        './music/' + outfile + '.bin',5
+        './music/' + outfile + '.bin',
         **kwargs)
  
 
@@ -159,10 +161,10 @@ def convert_sym(sym, outfile, **args):
 # convert_sym('../music/XPGain', 'SFX_XPGain', tracks=1)
 # convert_sym('../music/Glint', 'SFX_Glint', tracks=1)
 
-convert_sym('../music/Track01', 'Track01', tracks=4, vol=1)
-convert_sym('../music/Track02', 'Track02', tracks=4, vol=1)
-convert_sym('../music/Track03', 'Track03', tracks=4, vol=1)
-convert_sym('../music/Track04', 'Track04', tracks=4, vol=1)
-convert_sym('../music/Track05', 'Track05', tracks=4, vol=1)
-convert_sym('../music/Track06', 'Track06', tracks=4, vol=1)
-convert_sym('../music/Track07', 'Track07', tracks=4, vol=1)
+convert_sym('../music/Track01', 'Track01', tracks=2, vol=0.8)
+convert_sym('../music/Track02', 'Track02', tracks=2, vol=0.5)
+convert_sym('../music/Track03', 'Track03', tracks=2, vol=0.8)
+convert_sym('../music/Track04', 'Track04', tracks=2, vol=1)
+convert_sym('../music/Track05', 'Track05', tracks=2, vol=0.8)
+convert_sym('../music/Track06', 'Track06', tracks=2, vol=0.8)
+convert_sym('../music/Track07', 'Track07', tracks=2, vol=1)

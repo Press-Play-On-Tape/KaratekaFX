@@ -6,8 +6,8 @@ using uint24_t = __uint24;
 
 // Initialize FX hardware using  FX::begin(FX_DATA_PAGE); in the setup() function.
 
-constexpr uint16_t FX_DATA_PAGE  = 0xfe0d;
-constexpr uint24_t FX_DATA_BYTES = 123463;
+constexpr uint16_t FX_DATA_PAGE  = 0xff67;
+constexpr uint24_t FX_DATA_BYTES = 34962;
 
 constexpr uint16_t FX_SAVE_PAGE  = 0xfff0;
 constexpr uint24_t FX_SAVE_BYTES = 2;
@@ -303,14 +303,16 @@ namespace Constants
 namespace Music
 {
   constexpr uint24_t Song_Track01 = 0x007A51;
-  constexpr uint24_t Song_Track02 = 0x007F65;
-  constexpr uint24_t Song_Track03 = 0x008160;
-  constexpr uint24_t Song_Track04 = 0x011A3A;
-  constexpr uint24_t Song_Track05 = 0x011D39;
-  constexpr uint24_t Song_Track06 = 0x0120AD;
-  constexpr uint24_t Song_Track07 = 0x0126EC;
-  constexpr uint24_t SFX_Death = 0x01E18B;
-  constexpr uint24_t Songs = 0x01E22F;
-  constexpr uint24_t SFXs = 0x01E244;
+  constexpr uint24_t Song_Track02 = 0x007C3B;
+  constexpr uint24_t Song_Track03 = 0x007D06;
+  constexpr uint24_t Song_Track04 = 0x007FA6;
+  constexpr uint24_t Song_Track05 = 0x0080A9;
+  constexpr uint24_t Song_Track06 = 0x0081BA;
+  constexpr uint24_t Song_Track07 = 0x008468;
+  constexpr uint24_t SFX_Death = 0x0087B0;
+  constexpr uint24_t SFX_PlayerBlip = 0x008854;
+  constexpr uint24_t SFX_EnemyBlip = 0x008864;
+  constexpr uint24_t Songs = 0x008874;
+  constexpr uint24_t SFXs = 0x008889;
 }
 

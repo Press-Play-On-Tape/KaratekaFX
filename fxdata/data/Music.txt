@@ -9,6 +9,8 @@ namespace Music
     raw_t Song_Track07 = "music/Track07.bin"
 
     raw_t SFX_Death = "music/SFX_Death.bin"
+    raw_t SFX_PlayerBlip = "music/SFX_PlayerBlip.bin"
+    raw_t SFX_EnemyBlip = "music/SFX_EnemyBlip.bin"
 
     uint24_t Songs[] = { 
         Song_Track01, 
@@ -20,8 +22,11 @@ namespace Music
         Song_Track07, 
         };
 
-    uint24_t SFXs[] =  { SFX_Death, 
-                       };
+    uint24_t SFXs[] =  { 
+        SFX_Death, 
+        SFX_PlayerBlip,
+        SFX_EnemyBlip,
+        };
 
 
 namespace_end  
